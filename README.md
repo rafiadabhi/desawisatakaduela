@@ -42,6 +42,60 @@ Kemudian extract ZIP di folder tersebut dan aktifkan theme melalui WordPress.
 
 Berita akan otomatis muncul di bagian Berita pada Beranda dan halaman Berita. Tidak perlu membuat halaman atau card berita secara manual.
 
+## Mengubah Informasi Harga pada Theme
+
+Informasi harga halaman statis tersimpan langsung di file PHP theme. Untuk mengganti harga, cari file halaman yang sesuai berikut:
+
+| Halaman | File yang perlu diperiksa |
+|---|---|
+| Telaga Biru Cicerem | `page-telaga.php` atau file PHP dengan nama `telaga` |
+| Wisata Side Land | `page-sideland.php` atau file PHP dengan nama `sideland` |
+| Paket Wisata | `page-paketwisata.php` atau file PHP dengan nama `paketwisata` |
+| Akomodasi/Homestay | `page-akomodasi.php` atau file PHP dengan nama `akomodasi` |
+| Suvenir, snack, dan merchandise | `page-suvenir.php` atau file PHP dengan nama `suvenir` |
+
+Nama file dapat sedikit berbeda tergantung hasil konversi theme. Jika tidak yakin, gunakan pencarian teks di seluruh folder theme. Di VS Code tekan **Ctrl + Shift + F**, lalu cari angka harga seperti `15.000`, `75.000`, `165.000`, `65.000`, atau `100.000`.
+
+Contoh kode harga yang mungkin ditemukan:
+
+```php
+<span>Rp15.000</span>
+<p>Rp75.000/malam/orang</p>
+```
+
+Ganti hanya angka atau keterangan harga yang diperlukan. Jangan menghapus kode PHP seperti `<?php`, `get_header()`, `get_footer()`, `the_content()`, atau fungsi WordPress lainnya.
+
+### Alur update harga
+
+1. Simpan salinan/backup folder theme yang sedang aktif.
+2. Edit file PHP di komputer.
+3. Cari harga lama menggunakan **Ctrl + Shift + F**.
+4. Ganti harga, lalu simpan file.
+5. Uji halaman secara lokal jika memungkinkan.
+6. Buat ZIP ulang folder theme dengan struktur yang benar. Folder utama ZIP harus langsung berisi `style.css`, `functions.php`, `header.php`, dan file theme lainnya.
+7. Upload ZIP baru melalui WordPress atau cPanel.
+8. Bersihkan cache WordPress, plugin cache, CDN jika ada, dan cache browser.
+9. Buka halaman menggunakan mode incognito untuk memastikan harga terbaru tampil.
+
+### Update melalui cPanel
+
+1. Buka **cPanel → File Manager**.
+2. Masuk ke:
+
+```text
+public_html/wp-content/themes/nama-folder-theme/
+```
+
+3. Untuk perubahan satu atau dua file, upload file PHP baru langsung ke folder theme dan gunakan nama file yang sama.
+4. Jika mengganti seluruh theme, upload ZIP ke folder `themes`, lalu extract ke folder sementara, misalnya `desa-wisata-kaduela-update`.
+5. Periksa isi folder hasil extract. Pastikan file theme tidak berada satu tingkat terlalu dalam, contohnya `nama-theme/nama-theme/style.css`.
+6. Setelah yakin, backup folder theme lama sebelum menggantinya dengan versi baru.
+7. Aktifkan theme melalui **WordPress → Tampilan → Tema** jika nama folder theme berubah.
+
+Jangan menghapus atau menimpa folder `wp-content/uploads/` dan jangan menghapus database WordPress. Berita, media WordPress, pengguna, dan pengaturan tersimpan di luar file theme. Mengganti file theme hanya mengubah tampilan serta konten statis yang ditulis di dalam theme.
+
+Untuk perubahan kecil seperti harga, mengunggah file PHP yang berubah saja biasanya lebih cepat dan lebih aman daripada mengunggah ulang seluruh ZIP.
+
 ## Struktur Theme
 
 ```text
