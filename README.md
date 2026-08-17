@@ -1,4 +1,4 @@
-# Desa Wisata Kaduela — WordPress Theme
+# desawisatakaduela.com — WordPress Theme
 
 Theme WordPress klasik untuk website resmi Desa Wisata Kaduela, Kecamatan Pasawahan, Kabupaten Kuningan.
 
